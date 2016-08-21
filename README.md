@@ -12,7 +12,7 @@ No Requirement.
 
 ## Usage
 1. Add reference [Xb.Core.dll](https://github.com/ume05rw/Xb.Core/blob/master/binary/Xb.Core.dll) to your project.
-2. Call Methods. Xb.Any, or Create Instance.
+2. Call Methods Xb.Any(), or Create Instance.
 
 Namespace and Methods are...
 
