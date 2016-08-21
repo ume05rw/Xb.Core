@@ -16,6 +16,61 @@ No Requirement.
 
 Namespace and Methods are...
 
+    ・Xb.Net
+         |
+         +- .Http(Instance)
+         |    |
+         |    +- .Constructor(string url,
+         |    |               string passingValues = null,
+         |    |               Xb.Net.Http.MethodType method = Xb.Net.Http.MethodType.Get,
+         |    |               Dictionary<HttpRequestHeader, string> headers = null)
+         |    |   Create Xb.Net.Http Instance
+         |    |
+         |    +- .GetResponseAsync()
+         |    |   Get WebResponse and Stream by url
+         |    |
+         |    +- .GetAsync()
+         |        Get String by url
+         |
+         +- .Http(Static)
+         |    |
+         |    +- .GetParamString(Dictionary<string, object> values)
+         |    |   Convert Associative-Array to Http-Parameter-String
+         |    |
+         |    +- .EncodeUri(string text)
+         |    |   Get Uri-Encode string
+         |    |
+         |    +- .DecodeUri(string text)
+         |    |   Get Uri-Decode string
+         |    |
+         |    +- .GetFilename(string url)
+         |    |   Get File Name from url
+         |    |
+         |    +- .GetDirectory(string url)
+         |    |   Get Directory Name from url
+         |    |
+         |    +- .IsValidUrl(string url)
+         |        Validate url string
+         |
+         +- .HttpXml(Instance)
+         |    |
+         |    +- .Constructor(string url,
+         |    |               Dictionary<string, object> passingValues = null,
+         |    |               Xb.Net.Http.MethodType method = Xb.Net.Http.MethodType.Post,
+         |    |               Dictionary<HttpRequestHeader, string> headers = null)
+         |    |   Create Xb.Net.HttpXml Instance
+         |    |
+         |    +- .GetResponseAsync()
+         |    |   Get WebResponse and Stream by url
+         |    |
+         |    +- .GetAsync<T>()
+         |        Get Response from url, and Cast response to <T>
+         |
+         +- .HttpXml(Static)
+              |
+              +- .GetParamString(Dictionary<string, object> values)
+                  Convert Associative-Array to Http-Parameter-String
+    
     ・Xb.Byte
          |
          +- .GetBase64String(byte[] bytes)
@@ -192,62 +247,7 @@ Namespace and Methods are...
          |
          +- .GetEncode(System.IO.Stream stream, bool forceJapaneseDetection = false)
              Detect Encode from Byte-Array(for Japanese)
-    
-    ・Xb.Net
-         |
-         +- .Http(Instance)
-         |    |
-         |    +- .Constructor(string url,
-         |    |               string passingValues = null,
-         |    |               Xb.Net.Http.MethodType method = Xb.Net.Http.MethodType.Get,
-         |    |               Dictionary<HttpRequestHeader, string> headers = null)
-         |    |   Create Xb.Net.Http Instance
-         |    |
-         |    +- .GetResponseAsync()
-         |    |   Get WebResponse and Stream by url
-         |    |
-         |    +- .GetAsync()
-         |        Get String by url
-         |
-         +- .Http(Static)
-         |    |
-         |    +- .GetParamString(Dictionary<string, object> values)
-         |    |   Convert Associative-Array to Http-Parameter-String
-         |    |
-         |    +- .EncodeUri(string text)
-         |    |   Get Uri-Encode string
-         |    |
-         |    +- .DecodeUri(string text)
-         |    |   Get Uri-Decode string
-         |    |
-         |    +- .GetFilename(string url)
-         |    |   Get File Name from url
-         |    |
-         |    +- .GetDirectory(string url)
-         |    |   Get Directory Name from url
-         |    |
-         |    +- .IsValidUrl(string url)
-         |        Validate url string
-         |
-         +- .HttpXml(Instance)
-         |    |
-         |    +- .Constructor(string url,
-         |    |               Dictionary<string, object> passingValues = null,
-         |    |               Xb.Net.Http.MethodType method = Xb.Net.Http.MethodType.Post,
-         |    |               Dictionary<HttpRequestHeader, string> headers = null)
-         |    |   Create Xb.Net.HttpXml Instance
-         |    |
-         |    +- .GetResponseAsync()
-         |    |   Get WebResponse and Stream by url
-         |    |
-         |    +- .GetAsync<T>()
-         |        Get Response from url, and Cast response to <T>
-         |
-         +- .HttpXml(Static)
-              |
-              +- .GetParamString(Dictionary<string, object> values)
-                  Convert Associative-Array to Http-Parameter-String
-    
+
     ・Xb.Util
           |
           +- .Out(string message)
