@@ -576,7 +576,7 @@ namespace Xb
 
 
         /// <summary>
-        /// Quote string value, Escape for MySql
+        /// Quote string value, and Escape for MySql
         /// 文字列をシングルクォートで囲む。文字列中にシングルクォートがある場合、MySQL式のエスケープを行う。
         /// </summary>
         /// <param name="text"></param>
@@ -592,7 +592,7 @@ namespace Xb
 
 
         /// <summary>
-        /// Quote string value, Escape for Microsoft Sql Server
+        /// Quote string value, and Escape for Microsoft Sql Server
         /// 文字列をシングルクォートで囲む。文字列中にシングルクォートがある場合、SQL-Server/SQLite式のエスケープを行う。
         /// </summary>
         /// <param name="text"></param>
@@ -608,7 +608,7 @@ namespace Xb
 
 
         /// <summary>
-        /// Double-Quote string value, Escape for JSON
+        /// Double-Quote string value, and Escape for JSON
         /// 文字列をダブルクォートで囲む。文字列中にダブルクォートがある場合、JSON式エスケープを行う。
         /// </summary>
         /// <param name="text"></param>
@@ -624,7 +624,7 @@ namespace Xb
 
 
         /// <summary>
-        /// Double-Quote string value, Escape for CSV
+        /// Double-Quote string value, and Escape for CSV
         /// 文字列をダブルクォートで囲む。文字列中にダブルクォートがある場合、CSV式エスケープを行う。
         /// </summary>
         /// <param name="text"></param>

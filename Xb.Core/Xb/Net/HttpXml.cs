@@ -80,7 +80,7 @@ namespace Xb.Net
 
         
         /// <summary>
-        /// Get WebResponse, Stream by url
+        /// Get WebResponse and Stream by url
         /// 渡し値URLから取得したWebResponse, Streamを返す。
         /// </summary>
         /// <returns></returns>

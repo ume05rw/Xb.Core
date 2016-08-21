@@ -39,7 +39,7 @@ namespace Xb
 
 
         /// <summary>
-        /// Get DateTime from Unix-Time(milli-sec) integer
+        /// Get DateTime from Unix-Time integer
         /// UNIXタイム値から日付型値を取得する。
         /// </summary>
         /// <param name="unixTime"></param>
@@ -200,7 +200,7 @@ namespace Xb
 
 
         /// <summary>
-        /// Get DB-DateTime String
+        /// Get Database-DateTime String
         /// 日付型値から、汎用DBフォーマットの日時文字列を取得する。
         /// </summary>
         /// <param name="dateTime"></param>
@@ -350,8 +350,5 @@ namespace Xb
 
             return targetDateTime.ToString("yyyy.MM.dd");
         }
-
-
-       
     }
 }

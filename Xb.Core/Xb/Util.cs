@@ -8,6 +8,7 @@ namespace Xb
     public class Util
     {
         /// <summary>
+        /// Output message to console
         /// コンソールにメッセージを出力する。
         /// </summary>
         /// <param name="message"></param>
@@ -18,6 +19,7 @@ namespace Xb
         }
 
         /// <summary>
+        /// Output formatted-message to console
         /// コンソールに整形済みメッセージを出力する。
         /// </summary>
         /// <param name="format"></param>
@@ -28,6 +30,7 @@ namespace Xb
         }
 
         /// <summary>
+        /// Output Exception-Info to console
         /// コンソールに例外情報を出力する。
         /// </summary>
         /// <param name="ex"></param>
@@ -37,7 +40,8 @@ namespace Xb
         }
 
         /// <summary>
-        /// コンソールに、協調されたメッセージを出力する。
+        /// Output Highlighted message
+        /// コンソールに、強調されたメッセージを出力する。
         /// </summary>
         /// <param name="messages"></param>
 
@@ -71,6 +75,7 @@ namespace Xb
 
 
         /// <summary>
+        /// Get Formatted Exception-Info string-array
         /// 例外情報を整形した文字列配列を返す。
         /// </summary>
         /// <param name="ex"></param>
