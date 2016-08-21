@@ -194,6 +194,12 @@ Namespace and Methods.
           |
           +- Http(Instance)
           |   |
+          |   +- .Constructor(string url,
+          |   |               string passingValues = null,
+          |   |               Xb.Net.Http.MethodType method = Xb.Net.Http.MethodType.Get,
+          |   |               Dictionary<HttpRequestHeader, string> headers = null)
+          |   |   Create Xb.Net.Http Instance
+          |   |
           |   +- .GetResponseAsync()
           |   |   Get WebResponse and Stream by url
           |   |
@@ -221,6 +227,12 @@ Namespace and Methods.
           |       Validate url string
           |
           +- HttpXml(Instance)
+          |   |
+          |   +- .Constructor(string url,
+          |   |               Dictionary<string, object> passingValues = null,
+          |   |               Xb.Net.Http.MethodType method = Xb.Net.Http.MethodType.Post,
+          |   |               Dictionary<HttpRequestHeader, string> headers = null)
+          |   |   Create Xb.Net.HttpXml Instance
           |   |
           |   +- .GetResponseAsync()
           |   |   Get WebResponse and Stream by url
