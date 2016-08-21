@@ -64,7 +64,7 @@ Namespace and Methods are...
          |    |   Get WebResponse and Stream by url
          |    |
          |    +- .GetAsync<T>()
-         |        Get Response from url, and Cast response to <T>
+         |        Get Response from url, and Cast response to <Class you've defined.>
          |
          +- .HttpXml(Static)
               |
