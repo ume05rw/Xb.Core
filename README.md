@@ -12,10 +12,65 @@ No Requirement.
 
 ## Usage
 1. Add reference [Xb.Core.dll](https://github.com/ume05rw/Xb.Core/blob/master/binary/Xb.Core.dll) to your project.
-2. Call Methods. Xb.Any, or Create Instance.
+2. Call Static Methods Xb.Any(), or Create Instance.
 
 Namespace and Methods are...
 
+    ・Xb.Net
+         |
+         +- .Http(Instance)
+         |    |
+         |    +- .Constructor(string url,
+         |    |               string passingValues = null,
+         |    |               Xb.Net.Http.MethodType method = Xb.Net.Http.MethodType.Get,
+         |    |               Dictionary<HttpRequestHeader, string> headers = null)
+         |    |   Create Xb.Net.Http Instance
+         |    |
+         |    +- .GetResponseAsync()
+         |    |   Get WebResponse and Stream by url
+         |    |
+         |    +- .GetAsync()
+         |        Get String by url
+         |
+         +- .Http(Static)
+         |    |
+         |    +- .GetParamString(Dictionary<string, object> values)
+         |    |   Convert Associative-Array to Http-Parameter-String
+         |    |
+         |    +- .EncodeUri(string text)
+         |    |   Get Uri-Encode string
+         |    |
+         |    +- .DecodeUri(string text)
+         |    |   Get Uri-Decode string
+         |    |
+         |    +- .GetFilename(string url)
+         |    |   Get File Name from url
+         |    |
+         |    +- .GetDirectory(string url)
+         |    |   Get Directory Name from url
+         |    |
+         |    +- .IsValidUrl(string url)
+         |        Validate url string
+         |
+         +- .HttpXml(Instance)
+         |    |
+         |    +- .Constructor(string url,
+         |    |               Dictionary<string, object> passingValues = null,
+         |    |               Xb.Net.Http.MethodType method = Xb.Net.Http.MethodType.Post,
+         |    |               Dictionary<HttpRequestHeader, string> headers = null)
+         |    |   Create Xb.Net.HttpXml Instance
+         |    |
+         |    +- .GetResponseAsync()
+         |    |   Get WebResponse and Stream by url
+         |    |
+         |    +- .GetAsync<T>()
+         |        Get Response from url, and Cast response to <Class you've defined.>
+         |
+         +- .HttpXml(Static)
+              |
+              +- .GetParamString(Dictionary<string, object> values)
+                  Convert Associative-Array to Http-Parameter-String
+    
     ・Xb.Byte
          |
          +- .GetBase64String(byte[] bytes)
@@ -39,7 +94,10 @@ Namespace and Methods are...
          +- .GetBitString(int value)
          |   Get Bit-String from integer(regarded as unsigned)
          |
-         +- .ByteArray Class
+         +- .ByteArray(Instance)
+              |
+              +- .Constructor(byte[] bytes)
+              |   Create Xb.Byte.ByteArray Instance
               |
               +- .GetBit(int byteIndex, int bitIndex)
               |   Get Bit value
@@ -189,78 +247,23 @@ Namespace and Methods are...
          |
          +- .GetEncode(System.IO.Stream stream, bool forceJapaneseDetection = false)
              Detect Encode from Byte-Array(for Japanese)
-    
-    ・Xb.Net
-         |
-         +- Http(Instance)
-         |   |
-         |   +- .Constructor(string url,
-         |   |               string passingValues = null,
-         |   |               Xb.Net.Http.MethodType method = Xb.Net.Http.MethodType.Get,
-         |   |               Dictionary<HttpRequestHeader, string> headers = null)
-         |   |   Create Xb.Net.Http Instance
-         |   |
-         |   +- .GetResponseAsync()
-         |   |   Get WebResponse and Stream by url
-         |   |
-         |   +- .GetAsync()
-         |       Get String by url
-         |
-         +- Http(Static)
-         |   |
-         |   +- .GetParamString(Dictionary<string, object> values)
-         |   |   Convert Associative-Array to Http-Parameter-String
-         |   |
-         |   +- .EncodeUri(string text)
-         |   |   Get Uri-Encode string
-         |   |
-         |   +- .DecodeUri(string text)
-         |   |   Get Uri-Decode string
-         |   |
-         |   +- .GetFilename(string url)
-         |   |   Get File Name from url
-         |   |
-         |   +- .GetDirectory(string url)
-         |   |   Get Directory Name from url
-         |   |
-         |   +- .IsValidUrl(string url)
-         |       Validate url string
-         |
-         +- HttpXml(Instance)
-         |   |
-         |   +- .Constructor(string url,
-         |   |               Dictionary<string, object> passingValues = null,
-         |   |               Xb.Net.Http.MethodType method = Xb.Net.Http.MethodType.Post,
-         |   |               Dictionary<HttpRequestHeader, string> headers = null)
-         |   |   Create Xb.Net.HttpXml Instance
-         |   |
-         |   +- .GetResponseAsync()
-         |   |   Get WebResponse and Stream by url
-         |   |
-         |   +- .GetAsync<T>()
-         |       Get Response from url, Cast response to T
-         |
-         +- HttpXml(Static)
-             |
-             +- .GetParamString(Dictionary<string, object> values)
-                 Convert Associative-Array to Http-Parameter-String
-    
+
     ・Xb.Util
-         |
-         +- .Out(string message)
-         |   Output message to console
-         |
-         +- .Out(string format, params object[] values)
-         |   Output formatted-message to console
-         |
-         +- .Out(Exception ex)
-         |   Output Exception-Info to console
-         |
-         +-  .OutHighlighted(params System.String[] messages)
-         |    Output Highlighted message
-         |
-         +- .GetErrorString(Exception ex)
-             Get Formatted Exception-Info string-array
+          |
+          +- .Out(string message)
+          |   Output message to console
+          |
+          +- .Out(string format, params object[] values)
+          |   Output formatted-message to console
+          |
+          +- .Out(Exception ex)
+          |   Output Exception-Info to console
+          |
+          +- .OutHighlighted(params System.String[] messages)
+          |   Output Highlighted message
+          |
+          +- .GetErrorString(Exception ex)
+              Get Formatted Exception-Info string-array
 
 ## Contribution
 1. Fork it ( https://github.com/ume05rw/Xb.Core/fork )
