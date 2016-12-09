@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Xb.Core</id>
+        <version>1.0.1</version>
+        <title>Xb.Core</title>
+        <authors>Xb.Core</authors>
+        <owners>Xb.Core</owners>
+        <licenseUrl>https://github.com/ume05rw/Xb.Core/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/ume05rw/Xb.Core</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Ready to Xamarin, Simple Library(PCL) for .Net</description>
+        <summary>Ready to Xamarin, Simple Library(PCL) for .Net</summary>
+        <releaseNotes>add .NET Framework4.5, .NET Standard1.1</releaseNotes>
+        <language>ja-JP</language>
+        <dependencies>
+            <group targetFramework=".NETStandard1.1">
+                <dependency id="Microsoft.NETCore.Portable.Compatibility" version="1.0.1" />
+                <dependency id="NETStandard.Library" version="1.6.1" />
+                <dependency id="System.Net.Requests" version="4.3.0" />
+                <dependency id="System.Xml.XmlSerializer" version="4.3.0" />
+            </group>
+            <group targetFramework=".NETFramework4.5" />
+            <group targetFramework=".NETPortable4.5-Profile259" />
+        </dependencies>
+    </metadata>
+</package>

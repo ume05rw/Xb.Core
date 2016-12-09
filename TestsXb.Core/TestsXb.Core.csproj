@@ -67,9 +67,9 @@
     <Compile Include="Xb\ByteTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Xb.Core\Xb.Core.csproj">
+    <ProjectReference Include="..\Xb.Core.PCL4.5\Xb.Core.PCL4.5.csproj">
       <Project>{291b5f04-5ae4-4e58-98e5-dab20b1996d4}</Project>
-      <Name>Xb.Core</Name>
+      <Name>Xb.Core.PCL4.5</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

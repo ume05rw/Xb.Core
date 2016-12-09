@@ -123,7 +123,7 @@ namespace Xb.Net
         /// <summary>
         /// Header Values
         /// </summary>
-        public Dictionary<HttpRequestHeader, string> Headers { get; private set; }
+        public Dictionary<System.Net.HttpRequestHeader, string> Headers { get; private set; }
 
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Xb.Net
         public Http(string url,
                     string passingValues = null,
                     Xb.Net.Http.MethodType method = Xb.Net.Http.MethodType.Get,
-                    Dictionary<HttpRequestHeader, string> headers = null)
+                    Dictionary<System.Net.HttpRequestHeader, string> headers = null)
         {
             this.Url = url;
             this.PassingValues = passingValues;
@@ -249,7 +249,7 @@ namespace Xb.Net
             {
                 try
                 {
-                    foreach (KeyValuePair<HttpRequestHeader, string> pair in this.Headers)
+                    foreach (KeyValuePair<System.Net.HttpRequestHeader, string> pair in this.Headers)
                     {
                         request.Headers[pair.Key] = pair.Value;
                     }
@@ -307,7 +307,7 @@ namespace Xb.Net
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        protected async Task<WebResponse> GetResponseAsync(WebRequest request)
+        protected async Task<System.Net.WebResponse> GetResponseAsync(System.Net.WebRequest request)
         {
             System.Net.WebResponse response = null;
 
@@ -323,7 +323,7 @@ namespace Xb.Net
                     //on success, exit for loop.
                     break;
                 }
-                catch (WebException we)
+                catch (System.Net.WebException we)
                 {
                     //caught WebException, return Exception's WebResponse
                     Xb.Util.Out("Xb.Net.Http.GetResponseAsync: catch WebException");
@@ -358,7 +358,7 @@ namespace Xb.Net
         /// </summary>
         /// <param name="response"></param>
         /// <returns></returns>
-        protected async Task<System.IO.Stream> GetResponseStreamAsync(WebResponse response)
+        protected async Task<System.IO.Stream> GetResponseStreamAsync(System.Net.WebResponse response)
         {
             System.IO.Stream responseStream = null;
 

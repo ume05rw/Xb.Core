@@ -31,7 +31,7 @@ namespace Xb.Net
         public HttpXml(string url,
                        Dictionary<string, object> passingValues = null,
                        Xb.Net.Http.MethodType method = Xb.Net.Http.MethodType.Post,
-                       Dictionary<HttpRequestHeader, string> headers = null)
+                       Dictionary<System.Net.HttpRequestHeader, string> headers = null)
             : base(url,
                    null,
                    method,
@@ -121,7 +121,7 @@ namespace Xb.Net
 
             try
             {
-                var serializer = new XmlSerializer(typeof(T));
+                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
                 var reader = new System.IO.StreamReader(resSet.Stream, Xb.Net.Http.Encode);
                 T result = (T)(serializer.Deserialize(reader));
 
