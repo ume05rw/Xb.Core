@@ -1,17 +1,19 @@
 Xb.Core
 ====
 
-Xamarin Ready, Simple Library(PCL) for .Net Framework 4.5 or later.
+Xamarin & .NET Core Ready, Tiny Library.
 
 ## Description
-It's Simple Lybrary, most of these are the static method.
-Functions for Bytes, Date, Number, String, Http-Query and Console.
+It's Smallest Lybrary, most of these are the static method.  
+Functions for Bytes, Date, Number, String, Http-Query and Console.  
+
+Supports .NET4.5, .NET-PCL4.5, .NET Standard1.1
 
 ## Requirement
 No Requirement.
 
 ## Usage
-1. Add reference [Xb.Core.dll](https://github.com/ume05rw/Xb.Core/blob/master/binary/Xb.Core.dll) to your project.
+1. [Add NuGet Package](https://www.nuget.org/packages/Xb.Core/) to your project.
 2. Call Static Methods Xb.Any(), or Create Instance.
 
 Namespace and Methods are...
