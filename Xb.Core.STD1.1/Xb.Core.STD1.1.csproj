@@ -36,6 +36,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <Compile Include="..\Xb.Core.PCL4.5\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Xb.Core.PCL4.5\Xb\Byte.cs">
       <Link>Xb\Byte.cs</Link>
     </Compile>
@@ -60,7 +63,6 @@
     <Compile Include="..\Xb.Core.PCL4.5\Xb\Util.cs">
       <Link>Xb\Util.cs</Link>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
