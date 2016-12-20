@@ -83,13 +83,20 @@ namespace Xb
         public static string[] GetErrorString(Exception ex)
         {
             var list = new List<string>();
-            list.Add(ex.Message);
-            list.Add("");
 
-            list.AddRange(ex.StackTrace.Split(new string[] { "場所" }, 
-                                              StringSplitOptions.None)
-                                       .AsEnumerable()
-                                       .Select(row => "\r\n場所" + row));
+            if (ex.Message != null)
+            {
+                list.Add(ex.Message ?? "");
+                list.Add("");
+            }
+
+            if (ex.StackTrace != null)
+            {
+                list.AddRange(ex.StackTrace.Split(new string[] { "場所", "at" },
+                                                  StringSplitOptions.None)
+                                           .AsEnumerable()
+                                           .Select(row => "\r\nat" + row));
+            }
 
             if (ex.InnerException != null)
             {
