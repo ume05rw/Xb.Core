@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Xb
@@ -12,10 +13,9 @@ namespace Xb
         /// コンソールにメッセージを出力する。
         /// </summary>
         /// <param name="message"></param>
-
         public static void Out(string message)
         {
-            System.Diagnostics.Debug.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.fff")}: {message}");
+            Debug.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.fff")}: {message}");
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Xb
         /// <param name="values"></param>
         public static void Out(string format, params object[] values)
         {
-            Xb.Util.Out(System.String.Format(format, values));
+            Xb.Util.Out(string.Format(format, values));
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Xb
         /// <param name="ex"></param>
         public static void Out(Exception ex)
         {
-            Xb.Util.OutHighlighted(Xb.Util.GetErrorString(ex).ToArray());
+            Xb.Util.OutHighlighted(Xb.Util.GetErrorString(ex));
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Xb
             list.Add("");
             list.Add("");
 
-            System.Diagnostics.Debug.WriteLine(string.Join("\r\n", list));
+            Debug.WriteLine(string.Join("\r\n", list));
         }
 
 
