@@ -14,7 +14,7 @@ namespace Xb
         /// UNIX時間の開始日時
         /// </summary>
         private static readonly DateTime UnixtimeStartValue 
-            = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
 
 
         /// <summary>
