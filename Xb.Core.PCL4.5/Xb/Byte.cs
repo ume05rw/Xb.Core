@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Linq;
 
 namespace Xb
 {
@@ -101,7 +102,7 @@ namespace Xb
         /// <remarks></remarks>
         public static string GetBitString(byte value)
         {
-            return Convert.ToString(value, 2);
+            return Convert.ToString(value, 2).PadLeft(8, '0');
         }
 
 
@@ -139,6 +140,11 @@ namespace Xb
             /// </summary>
             public List<byte> Bytes => this._bytes;
 
+            /// <summary>
+            /// Joined Bit String
+            /// 全バイト配列を連結したビット文字列
+            /// </summary>
+            public string BitString => string.Join("", this._bytes.Select(Xb.Byte.GetBitString));
 
             /// <summary>
             /// Constructor
@@ -253,6 +259,109 @@ namespace Xb
 
                 return (long)BitConverter.ToUInt64(bytes, 0);
             }
+
+
+            public class Index
+            {
+                public ByteArray ByteArray { get; }
+                public int ByteIndex { get; internal set; } = -1;
+                public int BitIndex { get; internal set; } = -1;
+
+                public Index Next
+                {
+                    get
+                    {
+                        var result = new Index(this.ByteArray);
+                        result.ByteIndex = this.ByteIndex;
+                        result.BitIndex = this.BitIndex + 1;
+
+                        if (8 <= result.BitIndex)
+                        {
+                            result.BitIndex = 0;
+                            result.ByteIndex++;
+                        }
+
+                        if (this.ByteArray.Bytes.Count <= result.ByteIndex)
+                        {
+                            result.BitIndex = -1;
+                            result.ByteIndex = -1;
+                        }
+
+                        return result;
+                    }
+                }
+
+
+                public Index Prev
+                {
+                    get
+                    {
+                        var result = new Index(this.ByteArray);
+                        result.ByteIndex = this.ByteIndex;
+                        result.BitIndex = this.BitIndex - 1;
+
+                        if (result.BitIndex < 0)
+                        {
+                            result.BitIndex = 7;
+                            result.ByteIndex--;
+                        }
+
+                        if (result.ByteIndex < 0)
+                        {
+                            result.BitIndex = -1;
+                            result.ByteIndex = -1;
+                        }
+
+                        return result;
+                    }
+                }
+
+                internal Index(ByteArray byteArray)
+                {
+                    this.ByteArray = byteArray;
+                }
+            }
+
+            public Index IndexOf(bool value)
+            {
+                var result = new Index(this);
+                var needle = value ? "1" : "0";
+
+                for (var i = 0; i < this._bytes.Count; i++)
+                {
+                    var bitString = Xb.Byte.GetBitString(this._bytes[i]);
+                    var index = bitString.IndexOf(needle, StringComparison.Ordinal);
+                    if (index >= 0)
+                    {
+                        result.ByteIndex = i;
+                        result.BitIndex = index;
+                        break;
+                    }
+                }
+                
+                return result;
+            }
+
+            public Index LastIndexOf(bool value)
+            {
+                var result = new Index(this);
+                var needle = value ? "1" : "0";
+
+                for (var i = this._bytes.Count - 1; i >= 0; i--)
+                {
+                    var bitString = Xb.Byte.GetBitString(this._bytes[i]);
+                    var index = bitString.LastIndexOf(needle, StringComparison.Ordinal);
+                    if (index >= 0)
+                    {
+                        result.ByteIndex = i;
+                        result.BitIndex = index;
+                        break;
+                    }
+                }
+
+                return result;
+            }
+            
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace TestsXb.Core
 {
     [TestClass()]
-    public class ByteTests
+    public class ByteTests : TestBase
     {
         [TestMethod()]
         public void GetBase64StringTest()
@@ -146,6 +146,69 @@ namespace TestsXb.Core
             var bytes = System.Text.Encoding.UTF8.GetBytes("おれはジャイアン、ガキ大将");
             var ary = new Xb.Byte.ByteArray(bytes);
             Assert.AreEqual(977314964362, ary.GetLong(2, 5));
+        }
+
+
+        [TestMethod()]
+        public void ByteArrayTest1()
+        {
+            var addr = new byte[]
+            {
+                (byte)192,
+                (byte)168,
+                (byte)254,
+                (byte)105
+            };
+            var mask = new byte[]
+            {
+                (byte)255,
+                (byte)255,
+                (byte)255,
+                (byte)0
+            };
+
+            var addrBytes = new Xb.Byte.ByteArray(addr);
+            var maskBytes = new Xb.Byte.ByteArray(mask);
+
+            this.Out(addrBytes.BitString);
+            this.Out(maskBytes.BitString);
+
+            var maskIdx = maskBytes.LastIndexOf(true);
+            this.Out($"maskIdx.ByteIndex: {maskIdx.ByteIndex}, maskIdx.BitIndex: {maskIdx.BitIndex}");
+            Assert.AreEqual(2, maskIdx.ByteIndex);
+            Assert.AreEqual(7, maskIdx.BitIndex);
+            
+
+            var startIdx = maskIdx.Next;
+            this.Out($"startIdx.ByteIndex: {startIdx.ByteIndex}, startIdx.BitIndex: {startIdx.BitIndex}");
+            Assert.AreEqual(3, startIdx.ByteIndex);
+            Assert.AreEqual(0, startIdx.BitIndex);
+
+            Assert.AreEqual(3, startIdx.Next.ByteIndex);
+            Assert.AreEqual(1, startIdx.Next.BitIndex);
+
+            var prevIdx = startIdx.Prev;
+            this.Out($"prevIdx.ByteIndex: {prevIdx.ByteIndex}, prevIdx.BitIndex: {prevIdx.BitIndex}");
+            Assert.AreEqual(2, prevIdx.ByteIndex);
+            Assert.AreEqual(7, prevIdx.BitIndex);
+            Assert.AreEqual(2, prevIdx.Prev.ByteIndex);
+            Assert.AreEqual(6, prevIdx.Prev.BitIndex);
+
+            var idx = maskIdx;
+            while ((idx = idx.Next).ByteIndex != -1)
+            {
+                addrBytes.SetBit(idx.ByteIndex, idx.BitIndex, false);
+            }
+            this.Out(addrBytes.BitString);
+            this.Out("NetworkAddress: " + string.Join(".", addrBytes.Bytes.Select(b => ((int) b).ToString())));
+
+            idx = maskIdx;
+            while ((idx = idx.Next).ByteIndex != -1)
+            {
+                addrBytes.SetBit(idx.ByteIndex, idx.BitIndex, true);
+            }
+            this.Out(addrBytes.BitString);
+            this.Out("BroadcastAddress: " + string.Join(".", addrBytes.Bytes.Select(b => ((int)b).ToString())));
         }
     }
 }
