@@ -92,10 +92,10 @@ namespace Xb
 
             if (ex.StackTrace != null)
             {
-                list.AddRange(ex.StackTrace.Split(new string[] { "場所", "at" },
+                list.AddRange(ex.StackTrace.Split(new string[] { "場所", "at " },
                                                   StringSplitOptions.None)
                                            .AsEnumerable()
-                                           .Select(row => "\r\nat" + row));
+                                           .Select(row => "\r\nat " + row));
             }
 
             if (ex.InnerException != null)
