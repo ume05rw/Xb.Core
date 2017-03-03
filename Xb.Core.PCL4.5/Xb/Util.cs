@@ -44,8 +44,18 @@ namespace Xb
         /// コンソールに、強調されたメッセージを出力する。
         /// </summary>
         /// <param name="messages"></param>
-
         public static void OutHighlighted(params System.String[] messages)
+        {
+            Debug.WriteLine(Xb.Util.GetHighlighted(messages));
+        }
+
+        /// <summary>
+        /// Cast string-arrary to Highlighted message
+        /// 文字列配列を強調メッセージ形式文字列に変換する。
+        /// </summary>
+        /// <param name="messages"></param>
+        /// <returns></returns>
+        public static string GetHighlighted(params System.String[] messages)
         {
             var time = DateTime.Now;
             var list = new List<string>();
@@ -70,7 +80,19 @@ namespace Xb
             list.Add("");
             list.Add("");
 
-            Debug.WriteLine(string.Join("\r\n", list));
+            return string.Join("\r\n", list);
+        }
+
+
+        /// <summary>
+        /// Get Exception-Info message
+        /// 例外情報文字列を取得する。
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <returns></returns>
+        public static string GetErrorHighlighted(Exception ex)
+        {
+            return Xb.Util.GetHighlighted(Xb.Util.GetErrorString(ex));
         }
 
 
