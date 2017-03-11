@@ -647,7 +647,9 @@ namespace Xb
         /// </summary>
         /// <param name="bytes"></param>
         /// <returns></returns>
-        /// <remarks></remarks>
+        /// <remarks>
+        /// エンコードが分かっているときは、Encoding.GetString()を使うこと。
+        /// </remarks>
         public static string GetString(byte[] bytes)
         {
             if (bytes == null)
@@ -662,7 +664,9 @@ namespace Xb
         /// </summary>
         /// <param name="stream"></param>
         /// <returns></returns>
-        /// <remarks></remarks>
+        /// <remarks>
+        /// エンコードが分かっているときは、Encoding.GetString()を使うこと。
+        /// </remarks>
         public static string GetString(System.IO.Stream stream)
         {
             if (stream == null)

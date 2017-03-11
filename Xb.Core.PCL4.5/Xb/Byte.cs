@@ -13,14 +13,6 @@ namespace Xb
     public class Byte
     {
         /// <summary>
-        /// Buffer size on reading stream
-        /// Stream読み込み時のバッファサイズ
-        /// </summary>
-        /// <remarks>default size: 1MB</remarks>
-        public static long BufferSize { get; set; } = 1048576;
-
-
-        /// <summary>
         /// Get Base64-String from Byte Array
         /// バイト配列からBase64文字列を生成する。
         /// </summary>
@@ -53,17 +45,14 @@ namespace Xb
         /// <remarks>
         /// thanks:
         /// http://www.atmarkit.co.jp/fdotnet/dotnettips/985memstream/memstream.html
+        /// http://stackoverflow.com/questions/221925/creating-a-byte-array-from-a-stream
         /// </remarks>
         public static byte[] GetBytes(System.IO.Stream stream)
         {
-            var buffer = new byte[Xb.Byte.BufferSize];
-
             using (var memStream = new System.IO.MemoryStream())
             {
-                int size;
-                while ((size = stream.Read(buffer, 0, buffer.Length)) > 0)
-                    memStream.Write(buffer, 0, size);
-
+                //アホほど速い...くっそーしらんやった...。
+                stream.CopyTo(memStream);
                 return memStream.ToArray();
             }
         }
